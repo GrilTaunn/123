@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Регистрация — ARQ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="site-header">
+<a class="logo" href="index.html">ARQ <span>/ 01</span></a>
+<nav><a href="courses.html">Курсы</a><a href="practice.html">Практика</a><a href="progress.html">Мой прогресс</a></nav>
+<a class="button button-dark" href="register.html">Зарегистрироваться</a><button class="menu-toggle" aria-label="Меню">☰</button>
+</header>
+<main>
+<section class="page-hero">
+<p class="eyebrow">REGISTRATION / 01</p>
+<h1>Создай аккаунт<br><em>и начни подготовку.</em></h1>
+<p class="lead">Регистрация нужна, чтобы сохранять твой прогресс и возвращаться к подготовке.</p>
+</section>
+<section class="section">
+<div class="register-card">
+<form id="register-form">
+<label>Имя<input id="register-name" type="text" name="name" autocomplete="name" placeholder="Твоё имя" required></label>
+<label>Электронная почта<input id="register-email" type="email" name="email" autocomplete="email" placeholder="name@example.com" required></label>
+<button class="button button-dark" type="submit">Зарегистрироваться ↗</button>
+<p class="form-note">В первой версии данные сохраняются только в браузере. Пароль пока не требуется.</p>
+</form>
+<div id="register-success" class="register-success" hidden></div>
+</div>
+</section>
+</main>
+<footer><div><a class="logo" href="index.html">ARQ <span>/ 01</span></a></div></footer>
+<script src="js/main.js"></script>
+<script>
+document.getElementById("register-form").addEventListener("submit", function(e){
+ e.preventDefault();
+ const name=document.getElementById("register-name").value.trim();
+ const email=document.getElementById("register-email").value.trim();
+ localStorage.setItem("arq_user", JSON.stringify({name,email}));
+ const box=document.getElementById("register-success");
+ box.hidden=false;
+ box.innerHTML="<p class='eyebrow'>ACCOUNT CREATED</p><h2>Добро пожаловать, "+name+"!</h2><p>Регистрация сохранена в этом браузере.</p><a class='button button-dark' href='courses.html'>Перейти к курсам →</a>";
+ this.hidden=true;
+});
+</script>
+</body>
+</html>
